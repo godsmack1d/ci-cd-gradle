@@ -1,0 +1,3 @@
+rootProject.name = 'ci-cd-gradle'
+
+include 'domain', 'service', 'web'

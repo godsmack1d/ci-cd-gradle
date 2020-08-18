@@ -1,0 +1,40 @@
+plugins {
+    id "org.sonarqube" version "3.0"
+}
+
+allprojects {
+    group = 'com.epam.patapau'
+    version = '0.1'
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+    }
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+
+    jacocoTestReport {
+        reports {
+            xml.enabled true
+        }
+    }
+
+    test {
+
+        testLogging {
+            events 'started', 'passed', 'skipped', 'failed'
+        }
+
+        maxParallelForks = Runtime.runtime.availableProcessors() / 2
+
+        finalizedBy(jacocoTestReport)
+    }
+
+}
+
+
