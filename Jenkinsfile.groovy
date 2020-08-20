@@ -1,4 +1,6 @@
 // https://www.jenkins.io/doc/pipeline/tour/tests-and-artifacts/
+// https://www.jenkins.io/doc/pipeline/steps/junit/
+// https://www.jenkins.io/doc/pipeline/steps/jacoco/
 
 pipeline {
     agent any
