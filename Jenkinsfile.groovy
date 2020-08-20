@@ -1,3 +1,5 @@
+// https://www.jenkins.io/doc/pipeline/tour/tests-and-artifacts/
+
 pipeline {
     agent any
     tools {
@@ -10,16 +12,16 @@ pipeline {
                 bat 'gradlew clean build'
             }
         }
-
-        /*stage('Test') {
-            steps {
-                bat 'gradlew check'
-            }
-        }*/
     }
     post {
         always {
             junit '**/test-results/test/*.xml'
+            jacoco(
+                    execPattern: '**/build/jacoco/test.exec',
+                    classPattern: '**/build/classes',
+                    sourcePattern: '**/src/main/java',
+                    exclusionPattern: '**/src/test*'
+            )
         }
     }
 }
