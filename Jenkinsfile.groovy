@@ -10,8 +10,13 @@ pipeline {
                 bat 'gradlew build'
             }
         }
-        stage('Publish test results') {
-            junit '**/test-results/test/*.xml'
+        post {
+            always {
+                junit '**/test-results/test/*.xml'
+            }
         }
+//        stage('Publish test results') {
+//            junit '**/test-results/test/*.xml'
+//        }
     }
 }
