@@ -7,15 +7,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'gradlew build'
+                bat 'gradlew clean build'
             }
         }
 
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 bat 'gradlew check'
             }
-        }
+        }*/
     }
     post {
         always {
