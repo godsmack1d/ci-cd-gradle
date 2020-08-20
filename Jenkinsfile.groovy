@@ -10,5 +10,8 @@ pipeline {
                 bat 'gradlew build'
             }
         }
+        stage('Publish test results') {
+            junit '**/test-results/test/*.xml'
+        }
     }
 }
