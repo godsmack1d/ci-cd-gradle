@@ -16,9 +16,10 @@ pipeline {
         }
 
         stage('SonarQube analysis') {
-            agent any
+            // agent any
             steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                // Server with this name must be added in configure system in Jenkins
+                withSonarQubeEnv('Local sonar server') {
                     bat 'gradlew sonarqube'
                 }
             }
