@@ -16,6 +16,7 @@ pipeline {
         }
 
         stage('SonarQube analysis') {
+            agent any
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
                     bat 'gradlew sonarqube'
