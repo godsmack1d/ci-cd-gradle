@@ -14,7 +14,14 @@ pipeline {
                 bat 'gradlew clean build'
             }
         }
+
+        stage('SonarQube analysis') {
+            withSonarQubeEnv('My SonarQube Server') {
+                bat 'gradlew sonarqube'
+            }
+        }
     }
+
     post {
         always {
             junit '**/test-results/test/*.xml'
