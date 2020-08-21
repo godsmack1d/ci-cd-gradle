@@ -1,6 +1,8 @@
 // https://www.jenkins.io/doc/pipeline/tour/tests-and-artifacts/
 // https://www.jenkins.io/doc/pipeline/steps/junit/
 // https://www.jenkins.io/doc/pipeline/steps/jacoco/
+// https://www.jenkins.io/doc/pipeline/steps/sonar/
+// https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/
 
 pipeline {
     agent any
@@ -16,7 +18,6 @@ pipeline {
         }
 
         stage('SonarQube analysis') {
-            // agent any
             steps {
                 // Server with this name must be added in configure system in Jenkins
                 withSonarQubeEnv('Local sonar server') {
